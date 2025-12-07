@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+import '../../domain/model/task.dart';
+
+class TaskItem extends StatelessWidget {
+  const TaskItem(
+    this.task, {
+    super.key,
+  });
+
+  final Task task;
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
