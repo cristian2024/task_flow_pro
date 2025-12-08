@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:task_flow_pro/domain/model/task.dart';
 
-const List<String> _taskDescriptions = [
+const List<String> _taskNotes = [
   "Revisar documentos pendientes",
   "Actualizar notas de la reunión",
   "Organizar los archivos del proyecto",
@@ -87,14 +87,27 @@ class TaskFakeData {
     String title = getRandomItem(_taskTitles, randomNumber);
 
     if (randomNumber % 9 != 0) {
-      description = getRandomItem(_taskDescriptions, randomNumber);
+      description = getRandomItem(_taskNotes, randomNumber);
+    }
+
+    //random date
+    DateTime? expectedDate;
+    final shouldAddDate = random.nextInt(3) != 2;
+    if (shouldAddDate) {
+      final actualDate = DateTime.now();
+      expectedDate = DateTime(
+        actualDate.year,
+        random.nextInt(12) + 1,
+        random.nextInt(30) + 1,
+      );
     }
 
     return Task(
-      description: description,
+      notes: description,
       id: randomNumber.toString(),
       title: title,
       isCompleted: randomBool,
+      expectedDate: expectedDate,
     );
   }
 }
