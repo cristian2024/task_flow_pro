@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:equatable/equatable.dart';
 
 class Task extends Equatable {
@@ -26,4 +27,21 @@ class Task extends Equatable {
     expectedDate,
     finishDate,
   ];
+  Task copyWith({
+    String? notes,
+    String? id,
+    String? title,
+    bool? isCompleted,
+    DateTime? expectedDate,
+    DateTime? finishDate,
+  }) {
+    return Task(
+      notes: notes ?? this.notes,
+      id: id ?? this.id,
+      title: title ?? this.title,
+      isCompleted: isCompleted ?? this.isCompleted,
+      expectedDate: expectedDate ?? this.expectedDate,
+      finishDate: finishDate ?? this.finishDate,
+    );
+  }
 }
