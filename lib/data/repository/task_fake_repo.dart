@@ -17,8 +17,7 @@ class TaskFakeRepo implements TaskRepository {
   }
   
   @override
-  Future<void> toggleTask(Task task, bool value) {
-    // TODO: implement toggleTask
-    throw UnimplementedError();
+  Future<void> toggleTask(Task task, bool value) async{
+    
   }
 }

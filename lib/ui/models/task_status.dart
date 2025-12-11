@@ -1,8 +1,1 @@
-enum TaskStatus {
-  inProcess,
-  completed,
-  overdue
-  ;
-
-  
-}
+enum TaskStatus { inProcess, completed, overdue }
