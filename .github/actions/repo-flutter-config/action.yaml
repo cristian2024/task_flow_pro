@@ -1,0 +1,33 @@
+name: Repository and Flutter setup
+description: Checkout repository and configure Java and Flutter
+
+inputs:
+  flutter_version:
+    description: "Flutter version to be installed on the runner"
+    default: 3.38.3
+
+  flutter_channel:
+    description: "Flutter channel to use (stable, beta, dev)"
+    default: stable
+
+  java_version:
+    description: "Java version required to build the Android project"
+    default: "17"
+
+  java_distribution:
+    description: "Java distribution to use (temurin, zulu, adopt, etc.)"
+    default: temurin
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: ${{ inputs.java_distribution }}
+        java-version: ${{ inputs.java_version }}
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version:
