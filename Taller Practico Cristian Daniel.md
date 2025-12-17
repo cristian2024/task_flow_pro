@@ -108,6 +108,7 @@ graph TD
       * Búscalo como: “*GitHub Actions for Flutter CI*” y “*cache dependencies in GitHub Actions*” en la doc de **GitHub Actions**.
   * **Preguntas catalizadoras (reflexión):**
       * “¿Por qué es importante el paso `flutter pub get` antes de `flutter analyze` en un ambiente de CI?”
+        * es un ambiente controlado con ningun contenido, el flutter pub get agrega a la cache del contenedor las dependencias necesarias para la ejecución 
   * **Checkpoint (lo que debes ver ahora):** Al hacer *push* a GitHub, el *workflow* debe ejecutarse y pasar correctamente (luz verde) en la pestaña **Actions**.
   * **Retos (según nivel) con criterios de aceptación:**
       * Reto 1 (fácil): Haz que el *workflow* ejecute `flutter format --set-exit-if-changed`. **Criterio:** La acción fallará si un archivo no cumple el formato estándar.

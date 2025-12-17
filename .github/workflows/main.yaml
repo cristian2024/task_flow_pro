@@ -1,0 +1,58 @@
+name: CI
+on:
+  pull_request:
+    branches:
+      - main
+      - development
+  push:
+    branches: 
+      - "**"
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configuring flutter
+        uses: ./.github/actions/repo-flutter-config
+        
+
+      - run: flutter pub get
+      - run: flutter --version
+      - run: flutter analyze
+      - run: dart format ./ --set-exit-if-changed
+
+  build-apk:
+    runs-on: ubuntu-latest
+    needs: [analyze]
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Configuring flutter
+        uses: ./.github/actions/repo-flutter-config
+
+      - run: flutter pub get
+      - run: flutter build apk --debug # en debug para no requerir llaves
+      - uses: actions/upload-artifact@v4
+        with:
+          name: debug-apk
+          path: build/app/outputs/apk/debug/*.apk
+          retention-days: 1
+
+  release-apk: 
+    runs-on: ubuntu-latest
+    needs: [build-apk]
+    if: needs.build-apk.result == 'success'
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: debug-apk
+      - name: Release debug version
+        uses: ncipollo/release-action@v1
+        with:
+          artifacts: "debug-apk/*.apk"
+          tag: v1.0.${{ github.run_number}}.debug
+          token: ${{ secrets.TOKEN}}
