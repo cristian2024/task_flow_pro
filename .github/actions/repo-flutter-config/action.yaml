@@ -3,12 +3,19 @@ description: Checkout repository and setup Java & Flutter
 
 inputs:
   flutter_version:
+    description: "Versión de Flutter que se instalará en el runner"
     default: 3.38.3
+
   flutter_channel:
+    description: "Canal de Flutter a utilizar (stable, beta, dev)"
     default: stable
+
   java_version:
+    description: "Versión de Java requerida para compilar el proyecto Android"
     default: "17"
+
   java_distribution:
+    description: "Distribución de Java a usar (temurin, zulu, adopt, etc.)"
     default: temurin
 
 runs:
