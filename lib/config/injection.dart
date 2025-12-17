@@ -19,7 +19,6 @@ void inject() {
   );
 }
 
-
-T readIt<T extends Object>(){
+T readIt<T extends Object>() {
   return _instance.get();
 }

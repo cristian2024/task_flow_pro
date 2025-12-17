@@ -11,7 +11,7 @@ class TasksState extends Equatable {
 
   @override
   List<Object?> get props => [status, tasks];
-  
+
   TasksState copyWith({
     ProcessStatus? status,
     List<Task>? tasks,

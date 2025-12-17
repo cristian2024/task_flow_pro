@@ -1,4 +1,3 @@
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_flow_pro/domain/model/task.dart';
@@ -26,7 +25,7 @@ class TasksCubit extends Cubit<TasksState> {
 
     try {
       final tasks = await _listTasksUseCase.getTasks();
-      
+
       emit(
         state.copyWith(
           status: ProcessStatus.completed,

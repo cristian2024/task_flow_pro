@@ -9,15 +9,13 @@ class TaskFakeRepo implements TaskRepository {
   Future<List<Task>> getTasks() async {
     return _taskData.getListOfTasks();
   }
-  
+
   @override
   Future<void> createTask(Task task) {
     // TODO: implement createTask
     throw UnimplementedError();
   }
-  
+
   @override
-  Future<void> toggleTask(Task task, bool value) async{
-    
-  }
+  Future<void> toggleTask(Task task, bool value) async {}
 }

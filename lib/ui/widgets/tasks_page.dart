@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart'
-    show BlocConsumer, ReadContext;
+import 'package:flutter_bloc/flutter_bloc.dart' show BlocConsumer, ReadContext;
 import 'package:task_flow_pro/ui/models/process_status.dart';
 import 'package:task_flow_pro/ui/provider/tasks/tasks_cubit.dart';
 import 'package:task_flow_pro/ui/widgets/task_item.dart';
